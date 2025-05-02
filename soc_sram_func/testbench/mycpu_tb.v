@@ -33,11 +33,16 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 `timescale 1ns / 1ps
 
 `define WORK_SPACE "../../../../../../../" // use your work_space 
-`define TRACE_REF_FILE_PRFIX {`WORK_SPACE,"riscv-test32/"}
-`define TRACE_REF_FILE(TEST_NAME) {`TRACE_REF_FILE_PRFIX,TEST_NAME,"-riscv32-nemu.lans"}
-`define SOURCE_FILE(TEST_NAME) {`TRACE_REF_FILE_PRFIX,TEST_NAME,"-riscv32-nemu.data"}
+// `define TRACE_REF_FILE_PRFIX {`WORK_SPACE,"riscv-test32/"}
+// `define SOURCE_FILE(TEST_NAME) {`TRACE_REF_FILE_PRFIX,TEST_NAME,"-riscv32-nemu.data"}
+// `define TRACE_REF_FILE(TEST_NAME) {`TRACE_REF_FILE_PRFIX,TEST_NAME,"-riscv32-nemu.lans"}
+// `define TRACE_REF_FILE_PRFIX {`WORK_SPACE,"new-test/"}
+// `define TRACE_REF_FILE_PRFIX {`WORK_SPACE,"riscv-arch-test/"}
+// `define TRACE_REF_FILE(TEST_NAME) {`TRACE_REF_FILE_PRFIX,TEST_NAME,"-riscv32-ni.lans"}
+`define TRACE_REF_FILE(PREFIX,TEST_NAME) {PREFIX,"golden_trace/",TEST_NAME,"-riscv32-ni.ans"}
+`define SOURCE_FILE(PREFIX,TEST_NAME) {PREFIX,"data/",TEST_NAME,"-riscv32-ni.data"}
 `define CONFREG_NUM_REG      soc_lite.confreg.num_data
-`define CONFREG_OPEN_TRACE   1'b1
+`define CONFREG_OPEN_TRACE   1'b0
 `define CONFREG_NUM_MONITOR  1'b0
 `define CONFREG_UART_DISPLAY soc_lite.confreg.write_uart_valid
 `define CONFREG_UART_DATA    soc_lite.confreg.write_uart_data
@@ -130,7 +135,8 @@ begin
     if (!resetn) begin
         line <= 32'b0;
     end
-    if(|debug_wb_rf_wen && debug_wb_rf_wnum!=5'd0 && debug_rf[debug_wb_rf_wnum]!==debug_wb_rf_wdata_v && `CONFREG_OPEN_TRACE)
+    // if(|debug_wb_rf_wen && debug_wb_rf_wnum!=5'd0 && debug_rf[debug_wb_rf_wnum]!==debug_wb_rf_wdata_v && `CONFREG_OPEN_TRACE)
+    if(|debug_wb_rf_wen && debug_wb_rf_wnum!=5'd0 && `CONFREG_OPEN_TRACE)
     begin
         trace_cmp_flag=1'b0;
         while (!trace_cmp_flag && !($feof(trace_ref)))
@@ -183,7 +189,8 @@ begin
         debug_rf[30] <= 0;
         debug_rf[31] <= 0;
     end
-    else if(|debug_wb_rf_wen && debug_wb_rf_wnum!=5'd0 && debug_rf[debug_wb_rf_wnum]!==debug_wb_rf_wdata_v && `CONFREG_OPEN_TRACE)
+    // else if(|debug_wb_rf_wen && debug_wb_rf_wnum!=5'd0 && debug_rf[debug_wb_rf_wnum]!==debug_wb_rf_wdata_v && `CONFREG_OPEN_TRACE)
+    else if(|debug_wb_rf_wen && debug_wb_rf_wnum!=5'd0 && `CONFREG_OPEN_TRACE)
     begin
         if (  (debug_wb_pc!==ref_wb_pc) || (debug_wb_rf_wnum!==ref_wb_rf_wnum)
             ||(debug_wb_rf_wdata_v!==ref_wb_rf_wdata_v) )
@@ -243,18 +250,19 @@ begin
 end
 
 task unit_test;
-input [64*8-1:0] test_name;
+input [64*8-1:0] prefix, test_name;
 begin
     trash = 1'b1;
-    trace_ref = $fopen(`TRACE_REF_FILE(test_name), "r");
-    $fscanf(trace_ref, "%d", ref_line);
-    $readmemh(`SOURCE_FILE(test_name),soc_lite.inst_ram.mem);
-    $readmemh(`SOURCE_FILE(test_name),soc_lite.data_ram.mem);
+    trace_ref = $fopen(`TRACE_REF_FILE(prefix,test_name), "r");
+    
+    $readmemh(`SOURCE_FILE(prefix,test_name),soc_lite.inst_ram.mem);
+    $readmemh(`SOURCE_FILE(prefix,test_name),soc_lite.data_ram.mem);
     $display("        [%t] START TEST : \t%0s",$time, test_name);
 
     clk = 1'b0;
     resetn = 1'b0;
     #2000;
+    $fscanf(trace_ref, "%d", ref_line);
     resetn = 1'b1;
 
     // #5000
@@ -271,47 +279,124 @@ end
 endtask
 
 task unit_test_all;
-begin
-    unit_test("add-longlong");
-    unit_test("add");
-    unit_test("bit");
-    unit_test("bubble-sort");
-    // unit_test("div");
-    unit_test("dummy");
-    // unit_test("fact");
-    unit_test("fib");
-    // unit_test("goldbach");
-    // unit_test("hello-str");
-    unit_test("if-else");
-    // unit_test("leap-year");
-    unit_test("load-store");
-    // unit_test("matrix-mul");
-    unit_test("max");
-    unit_test("min3");
-    unit_test("mov-c");
-    unit_test("movsx");
-    // unit_test("mul-longlong");
-    unit_test("pascal");
-    // unit_test("prime");
-    unit_test("quick-sort");
-    // unit_test("recursion");
-    unit_test("select-sort");
-    unit_test("shift");
-    // unit_test("shuixianhua");
-    unit_test("string");
-    unit_test("sub-longlong");
-    unit_test("sum");
-    unit_test("switch");
-    unit_test("to-lower-case");
-    unit_test("unalign");
-    // unit_test("wanshu");
+begin : unit_test_all
+    localparam prefix = {`WORK_SPACE,"test/cpu-test/"};
+    // unit_test(prefix,"add-longlong");
+    // unit_test(prefix,"add");
+    // unit_test(prefix,"bit");
+    // unit_test(prefix,"bubble-sort");
+    // unit_test(prefix,"crc32");
+    // unit_test(prefix,"div");
+    // unit_test(prefix,"dummy");
+    // unit_test(prefix,"fact");
+    // unit_test(prefix,"fib");
+    // unit_test(prefix,"goldbach");
 
+    // // unit_test(prefix,"hello-str");
+    
+    // unit_test(prefix,"if-else");
+    // unit_test(prefix,"leap-year");
+    // unit_test(prefix,"load-store");
+    // unit_test(prefix,"matrix-mul");
+    // unit_test(prefix,"max");
+    // unit_test(prefix,"mersenne");
+    // unit_test(prefix,"min3");
+    // unit_test(prefix,"mov-c");
+    // unit_test(prefix,"movsx");
+    // unit_test(prefix,"mul-longlong");
+    // unit_test(prefix,"pascal");
+    // unit_test(prefix,"prime");
+    // unit_test(prefix,"quick-sort");
+    // unit_test(prefix,"recursion");
+    // unit_test(prefix,"select-sort");
+    // unit_test(prefix,"shift");
+    // unit_test(prefix,"shuixianhua");
+    // unit_test(prefix,"string");
+    // unit_test(prefix,"sub-longlong");
+    // unit_test(prefix,"sum");
+    // unit_test(prefix,"switch");
+    // unit_test(prefix,"to-lower-case");
+    // unit_test(prefix,"unalign");
+    // unit_test(prefix,"wanshu");
+    // unit_test(prefix,"dhrystone");
+end
+endtask
+
+task riscv_arch_test;
+begin : riscv_arch_test
+    localparam prefix = {`WORK_SPACE,"test/riscv-arch-test/"};
+    unit_test(prefix,"addi");
+    unit_test(prefix,"add");
+    unit_test(prefix,"andi");
+    unit_test(prefix,"and");
+    unit_test(prefix,"auipc");
+    unit_test(prefix,"beq");
+    unit_test(prefix,"bge");
+    unit_test(prefix,"bgeu");
+    unit_test(prefix,"blt");
+    unit_test(prefix,"bltu");
+    unit_test(prefix,"bne");
+    unit_test(prefix,"div");
+    unit_test(prefix,"divu");
+
+    // unit_test(prefix,"fence");
+    // unit_test(prefix,"jal");
+    // unit_test(prefix,"jalr");
+
+    unit_test(prefix,"lb-align");
+    unit_test(prefix,"lbu-align");
+    unit_test(prefix,"lh-align");
+    unit_test(prefix,"lhu-align");
+    unit_test(prefix,"lui");
+    unit_test(prefix,"lw-align");
+    unit_test(prefix,"misalign1-jalr");
+
+    unit_test(prefix,"mulh");
+    unit_test(prefix,"mulhsu"); 
+    unit_test(prefix,"mulhu");
+    unit_test(prefix,"mul");
+    unit_test(prefix,"ori");
+    unit_test(prefix,"or");
+    unit_test(prefix,"rem");
+    unit_test(prefix,"remu");
+    unit_test(prefix,"sb-align");
+    unit_test(prefix,"sh-align");
+    unit_test(prefix,"slli");
+    unit_test(prefix,"sll");
+    unit_test(prefix,"slti");
+    unit_test(prefix,"sltiu");
+    unit_test(prefix,"slt");
+    unit_test(prefix,"sltu");
+    unit_test(prefix,"srai");
+    unit_test(prefix,"sra");
+    unit_test(prefix,"srli");
+    unit_test(prefix,"srl");
+    unit_test(prefix,"sub");
+    unit_test(prefix,"sw-align");
+    unit_test(prefix,"xori");
+    unit_test(prefix,"xor");
+end
+endtask
+
+task csr_test;
+begin : csr_test
+    localparam prefix = {`WORK_SPACE,"test/csr-test/"};
+    unit_test(prefix,"csr");
+end
+endtask
+
+task coremark;
+begin :coremark
+    localparam prefix = {`WORK_SPACE,"test/coremark/"};
+    unit_test(prefix,"coremark");
 end
 endtask
 
 initial begin
-    // unit_test("div");
-    unit_test_all;
+    // unit_test_all;
+    // riscv_arch_test;
+    coremark;
+    // csr_test;
     $display("==============================================================");
     $display("Test end!");
     $display("----PASS!!!");

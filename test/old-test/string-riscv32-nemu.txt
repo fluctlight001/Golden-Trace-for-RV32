@@ -1,0 +1,689 @@
+
+/home/lanfeng/develop/njeum/njemulator/nexus-am/tests/cputest/build/string-riscv32-nemu.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+80100000 <_start>:
+80100000:	00106093          	ori	ra,zero,1
+80100004:	00209093          	slli	ra,ra,0x2
+80100008:	0080e093          	ori	ra,ra,8
+8010000c:	00106113          	ori	sp,zero,1
+80100010:	00311113          	slli	sp,sp,0x3
+80100014:	00116113          	ori	sp,sp,1
+80100018:	00806093          	ori	ra,zero,8
+8010001c:	0010d193          	srli	gp,ra,0x1
+80100020:	01006193          	ori	gp,zero,16
+80100024:	001151b3          	srl	gp,sp,ra
+80100028:	00206093          	ori	ra,zero,2
+8010002c:	01006113          	ori	sp,zero,16
+80100030:	001151b3          	srl	gp,sp,ra
+80100034:	0001e193          	ori	gp,gp,0
+80100038:	00806093          	ori	ra,zero,8
+8010003c:	00306113          	ori	sp,zero,3
+80100040:	003081b3          	add	gp,ra,gp
+80100044:	0001e193          	ori	gp,gp,0
+80100048:	00210193          	addi	gp,sp,2
+8010004c:	403081b3          	sub	gp,ra,gp
+80100050:	00606093          	ori	ra,zero,6
+80100054:	00306113          	ori	sp,zero,3
+80100058:	0020a1b3          	slt	gp,ra,sp
+8010005c:	001121b3          	slt	gp,sp,ra
+80100060:	0050a193          	slti	gp,ra,5
+80100064:	0420a193          	slti	gp,ra,66
+80100068:	ffa06093          	ori	ra,zero,-6
+8010006c:	ffd06113          	ori	sp,zero,-3
+80100070:	0020a1b3          	slt	gp,ra,sp
+80100074:	001121b3          	slt	gp,sp,ra
+80100078:	ffb0a193          	slti	gp,ra,-5
+8010007c:	fbe0a193          	slti	gp,ra,-66
+80100080:	0020b1b3          	sltu	gp,ra,sp
+80100084:	001131b3          	sltu	gp,sp,ra
+80100088:	ffb0b193          	sltiu	gp,ra,-5
+8010008c:	fbe0b193          	sltiu	gp,ra,-66
+80100090:	01806093          	ori	ra,zero,24
+80100094:	00806113          	ori	sp,zero,8
+80100098:	0020f1b3          	and	gp,ra,sp
+8010009c:	0100f193          	andi	gp,ra,16
+801000a0:	00006093          	ori	ra,zero,0
+801000a4:	00006113          	ori	sp,zero,0
+801000a8:	00006193          	ori	gp,zero,0
+801000ac:	00006213          	ori	tp,zero,0
+801000b0:	00006293          	ori	t0,zero,0
+801000b4:	00006313          	ori	t1,zero,0
+801000b8:	00006393          	ori	t2,zero,0
+801000bc:	00006413          	ori	s0,zero,0
+801000c0:	00006493          	ori	s1,zero,0
+801000c4:	00006513          	ori	a0,zero,0
+801000c8:	00006593          	ori	a1,zero,0
+801000cc:	00006613          	ori	a2,zero,0
+801000d0:	00006693          	ori	a3,zero,0
+801000d4:	00006713          	ori	a4,zero,0
+801000d8:	00006793          	ori	a5,zero,0
+801000dc:	00006813          	ori	a6,zero,0
+801000e0:	004000ef          	jal	ra,801000e4 <_loop1>
+
+801000e4 <_loop1>:
+801000e4:	00306093          	ori	ra,zero,3
+801000e8:	00308113          	addi	sp,ra,3
+801000ec:	008000ef          	jal	ra,801000f4 <_loop2>
+801000f0:	01606093          	ori	ra,zero,22
+
+801000f4 <_loop2>:
+801000f4:	00506113          	ori	sp,zero,5
+801000f8:	00506193          	ori	gp,zero,5
+801000fc:	00310463          	beq	sp,gp,80100104 <_loop3>
+80100100:	00906113          	ori	sp,zero,9
+
+80100104 <_loop3>:
+80100104:	00306113          	ori	sp,zero,3
+80100108:	00506193          	ori	gp,zero,5
+8010010c:	00311463          	bne	sp,gp,80100114 <_loop5>
+80100110:	00906113          	ori	sp,zero,9
+
+80100114 <_loop5>:
+80100114:	00506113          	ori	sp,zero,5
+80100118:	00506193          	ori	gp,zero,5
+8010011c:	00311463          	bne	sp,gp,80100124 <_loop6>
+80100120:	00906113          	ori	sp,zero,9
+
+80100124 <_loop6>:
+80100124:	00206213          	ori	tp,zero,2
+80100128:	00506293          	ori	t0,zero,5
+8010012c:	00524863          	blt	tp,t0,8010013c <_loop7>
+80100130:	00906113          	ori	sp,zero,9
+80100134:	00806113          	ori	sp,zero,8
+80100138:	00306113          	ori	sp,zero,3
+
+8010013c <_loop7>:
+8010013c:	ffb06213          	ori	tp,zero,-5
+80100140:	ffe06293          	ori	t0,zero,-2
+80100144:	00524663          	blt	tp,t0,80100150 <_loop8>
+80100148:	ffb06213          	ori	tp,zero,-5
+8010014c:	ffe06293          	ori	t0,zero,-2
+
+80100150 <_loop8>:
+80100150:	ffe06213          	ori	tp,zero,-2
+80100154:	14d06293          	ori	t0,zero,333
+80100158:	00526c63          	bltu	tp,t0,80100170 <_fun1>
+8010015c:	00006093          	ori	ra,zero,0
+80100160:	00106113          	ori	sp,zero,1
+80100164:	00206213          	ori	tp,zero,2
+80100168:	00306293          	ori	t0,zero,3
+8010016c:	010000ef          	jal	ra,8010017c <_main>
+
+80100170 <_fun1>:
+80100170:	00906213          	ori	tp,zero,9
+80100174:	00a06293          	ori	t0,zero,10
+80100178:	00008067          	ret
+
+8010017c <_main>:
+8010017c:	00006093          	ori	ra,zero,0
+80100180:	00106113          	ori	sp,zero,1
+80100184:	00206213          	ori	tp,zero,2
+80100188:	00306293          	ori	t0,zero,3
+8010018c:	00406333          	or	t1,zero,tp
+80100190:	005063b3          	or	t2,zero,t0
+80100194:	00706093          	ori	ra,zero,7
+80100198:	00806113          	ori	sp,zero,8
+8010019c:	0020c1b3          	xor	gp,ra,sp
+801001a0:	0190c193          	xori	gp,ra,25
+801001a4:	00006093          	ori	ra,zero,0
+801001a8:	00006113          	ori	sp,zero,0
+801001ac:	00006193          	ori	gp,zero,0
+801001b0:	00006213          	ori	tp,zero,0
+801001b4:	00006293          	ori	t0,zero,0
+801001b8:	00006313          	ori	t1,zero,0
+801001bc:	00006393          	ori	t2,zero,0
+801001c0:	00006413          	ori	s0,zero,0
+801001c4:	00006493          	ori	s1,zero,0
+801001c8:	00006513          	ori	a0,zero,0
+801001cc:	00006593          	ori	a1,zero,0
+801001d0:	00006613          	ori	a2,zero,0
+801001d4:	00006693          	ori	a3,zero,0
+801001d8:	00006713          	ori	a4,zero,0
+801001dc:	00006793          	ori	a5,zero,0
+801001e0:	00006813          	ori	a6,zero,0
+801001e4:	00000413          	li	s0,0
+801001e8:	00009117          	auipc	sp,0x9
+801001ec:	e1810113          	addi	sp,sp,-488 # 80109000 <_end>
+801001f0:	140000ef          	jal	ra,80100330 <_trm_init>
+
+801001f4 <nemu_assert>:
+801001f4:	00050463          	beqz	a0,801001fc <nemu_assert+0x8>
+801001f8:	00008067          	ret
+801001fc:	ff010113          	addi	sp,sp,-16
+80100200:	00100513          	li	a0,1
+80100204:	00112623          	sw	ra,12(sp)
+80100208:	11c000ef          	jal	ra,80100324 <_halt>
+
+Disassembly of section .text.startup:
+
+8010020c <main>:
+8010020c:	ff010113          	addi	sp,sp,-16
+80100210:	00812423          	sw	s0,8(sp)
+80100214:	80101437          	lui	s0,0x80101
+80100218:	ab840413          	addi	s0,s0,-1352 # 80100ab8 <_heap_end+0xf8100ab8>
+8010021c:	00842583          	lw	a1,8(s0)
+80100220:	00042503          	lw	a0,0(s0)
+80100224:	00112623          	sw	ra,12(sp)
+80100228:	00912223          	sw	s1,4(sp)
+8010022c:	24c000ef          	jal	ra,80100478 <my_strcmp>
+80100230:	00153513          	seqz	a0,a0
+80100234:	fc1ff0ef          	jal	ra,801001f4 <nemu_assert>
+80100238:	00442583          	lw	a1,4(s0)
+8010023c:	00042503          	lw	a0,0(s0)
+80100240:	801014b7          	lui	s1,0x80101
+80100244:	234000ef          	jal	ra,80100478 <my_strcmp>
+80100248:	00150513          	addi	a0,a0,1
+8010024c:	00153513          	seqz	a0,a0
+80100250:	fa5ff0ef          	jal	ra,801001f4 <nemu_assert>
+80100254:	00442583          	lw	a1,4(s0)
+80100258:	00042503          	lw	a0,0(s0)
+8010025c:	00158593          	addi	a1,a1,1
+80100260:	00150513          	addi	a0,a0,1
+80100264:	214000ef          	jal	ra,80100478 <my_strcmp>
+80100268:	00150513          	addi	a0,a0,1
+8010026c:	00153513          	seqz	a0,a0
+80100270:	f85ff0ef          	jal	ra,801001f4 <nemu_assert>
+80100274:	00442583          	lw	a1,4(s0)
+80100278:	00042503          	lw	a0,0(s0)
+8010027c:	00258593          	addi	a1,a1,2
+80100280:	00250513          	addi	a0,a0,2
+80100284:	1f4000ef          	jal	ra,80100478 <my_strcmp>
+80100288:	00150513          	addi	a0,a0,1
+8010028c:	00153513          	seqz	a0,a0
+80100290:	f65ff0ef          	jal	ra,801001f4 <nemu_assert>
+80100294:	00442583          	lw	a1,4(s0)
+80100298:	00042503          	lw	a0,0(s0)
+8010029c:	00358593          	addi	a1,a1,3
+801002a0:	00350513          	addi	a0,a0,3
+801002a4:	1d4000ef          	jal	ra,80100478 <my_strcmp>
+801002a8:	00150513          	addi	a0,a0,1
+801002ac:	00153513          	seqz	a0,a0
+801002b0:	f45ff0ef          	jal	ra,801001f4 <nemu_assert>
+801002b4:	801015b7          	lui	a1,0x80101
+801002b8:	ad058593          	addi	a1,a1,-1328 # 80100ad0 <_heap_end+0xf8100ad0>
+801002bc:	adc48513          	addi	a0,s1,-1316 # 80100adc <_heap_end+0xf8100adc>
+801002c0:	0c8000ef          	jal	ra,80100388 <my_strcpy>
+801002c4:	00c42583          	lw	a1,12(s0)
+801002c8:	11c000ef          	jal	ra,801003e4 <my_strcat>
+801002cc:	01042583          	lw	a1,16(s0)
+801002d0:	1a8000ef          	jal	ra,80100478 <my_strcmp>
+801002d4:	00153513          	seqz	a0,a0
+801002d8:	f1dff0ef          	jal	ra,801001f4 <nemu_assert>
+801002dc:	00500613          	li	a2,5
+801002e0:	02300593          	li	a1,35
+801002e4:	adc48513          	addi	a0,s1,-1316
+801002e8:	270000ef          	jal	ra,80100558 <my_memset>
+801002ec:	01442583          	lw	a1,20(s0)
+801002f0:	00500613          	li	a2,5
+801002f4:	2b4000ef          	jal	ra,801005a8 <my_memcmp>
+801002f8:	00153513          	seqz	a0,a0
+801002fc:	ef9ff0ef          	jal	ra,801001f4 <nemu_assert>
+80100300:	00c12083          	lw	ra,12(sp)
+80100304:	00812403          	lw	s0,8(sp)
+80100308:	00412483          	lw	s1,4(sp)
+8010030c:	00000513          	li	a0,0
+80100310:	01010113          	addi	sp,sp,16
+80100314:	00008067          	ret
+
+Disassembly of section .text._putc:
+
+80100318 <_putc>:
+80100318:	a10007b7          	lui	a5,0xa1000
+8010031c:	3ea78c23          	sb	a0,1016(a5) # a10003f8 <_heap_end+0x190003f8>
+80100320:	00008067          	ret
+
+Disassembly of section .text._halt:
+
+80100324 <_halt>:
+80100324:	00050513          	mv	a0,a0
+80100328:	0000006b          	0x6b
+8010032c:	0000006f          	j	8010032c <_halt+0x8>
+
+Disassembly of section .text._trm_init:
+
+80100330 <_trm_init>:
+80100330:	80000537          	lui	a0,0x80000
+80100334:	ff010113          	addi	sp,sp,-16
+80100338:	00050513          	mv	a0,a0
+8010033c:	00112623          	sw	ra,12(sp)
+80100340:	ecdff0ef          	jal	ra,8010020c <_etext>
+80100344:	00050513          	mv	a0,a0
+80100348:	0000006b          	0x6b
+8010034c:	0000006f          	j	8010034c <_trm_init+0x1c>
+
+Disassembly of section .text.my_strlen.part.0:
+
+80100350 <my_strlen.part.0>:
+80100350:	00054783          	lbu	a5,0(a0) # 80000000 <_heap_end+0xf8000000>
+80100354:	02078063          	beqz	a5,80100374 <my_strlen.part.0+0x24>
+80100358:	00150793          	addi	a5,a0,1
+8010035c:	00000513          	li	a0,0
+80100360:	00178793          	addi	a5,a5,1
+80100364:	fff7c703          	lbu	a4,-1(a5)
+80100368:	00150513          	addi	a0,a0,1
+8010036c:	fe071ae3          	bnez	a4,80100360 <my_strlen.part.0+0x10>
+80100370:	00008067          	ret
+80100374:	00000513          	li	a0,0
+80100378:	00008067          	ret
+
+Disassembly of section .text.my_strlen:
+
+8010037c <my_strlen>:
+8010037c:	00050463          	beqz	a0,80100384 <my_strlen+0x8>
+80100380:	fd1ff06f          	j	80100350 <my_strlen.part.0>
+80100384:	00008067          	ret
+
+Disassembly of section .text.my_strcpy:
+
+80100388 <my_strcpy>:
+80100388:	02058a63          	beqz	a1,801003bc <my_strcpy+0x34>
+8010038c:	02050863          	beqz	a0,801003bc <my_strcpy+0x34>
+80100390:	0005c783          	lbu	a5,0(a1)
+80100394:	00050713          	mv	a4,a0
+80100398:	00158593          	addi	a1,a1,1
+8010039c:	00078e63          	beqz	a5,801003b8 <my_strcpy+0x30>
+801003a0:	00f70023          	sb	a5,0(a4)
+801003a4:	0005c783          	lbu	a5,0(a1)
+801003a8:	00170713          	addi	a4,a4,1
+801003ac:	00158593          	addi	a1,a1,1
+801003b0:	fe0798e3          	bnez	a5,801003a0 <my_strcpy+0x18>
+801003b4:	00008067          	ret
+801003b8:	00008067          	ret
+801003bc:	801015b7          	lui	a1,0x80101
+801003c0:	80101537          	lui	a0,0x80101
+801003c4:	ff010113          	addi	sp,sp,-16
+801003c8:	01500613          	li	a2,21
+801003cc:	9fc58593          	addi	a1,a1,-1540 # 801009fc <_heap_end+0xf81009fc>
+801003d0:	a4450513          	addi	a0,a0,-1468 # 80100a44 <_heap_end+0xf8100a44>
+801003d4:	00112623          	sw	ra,12(sp)
+801003d8:	52c000ef          	jal	ra,80100904 <my_printf>
+801003dc:	00100513          	li	a0,1
+801003e0:	f45ff0ef          	jal	ra,80100324 <_halt>
+
+Disassembly of section .text.my_strcat:
+
+801003e4 <my_strcat>:
+801003e4:	ff010113          	addi	sp,sp,-16
+801003e8:	00112623          	sw	ra,12(sp)
+801003ec:	00812423          	sw	s0,8(sp)
+801003f0:	00912223          	sw	s1,4(sp)
+801003f4:	06058263          	beqz	a1,80100458 <my_strcat+0x74>
+801003f8:	00050493          	mv	s1,a0
+801003fc:	04050e63          	beqz	a0,80100458 <my_strcat+0x74>
+80100400:	00058413          	mv	s0,a1
+80100404:	f4dff0ef          	jal	ra,80100350 <my_strlen.part.0>
+80100408:	00044783          	lbu	a5,0(s0)
+8010040c:	02078663          	beqz	a5,80100438 <my_strcat+0x54>
+80100410:	00a48733          	add	a4,s1,a0
+80100414:	00140593          	addi	a1,s0,1
+80100418:	00000693          	li	a3,0
+8010041c:	00f70023          	sb	a5,0(a4)
+80100420:	0005c783          	lbu	a5,0(a1)
+80100424:	00168693          	addi	a3,a3,1
+80100428:	00170713          	addi	a4,a4,1
+8010042c:	00158593          	addi	a1,a1,1
+80100430:	fe0796e3          	bnez	a5,8010041c <my_strcat+0x38>
+80100434:	00d50533          	add	a0,a0,a3
+80100438:	00a48533          	add	a0,s1,a0
+8010043c:	00050023          	sb	zero,0(a0)
+80100440:	00c12083          	lw	ra,12(sp)
+80100444:	00812403          	lw	s0,8(sp)
+80100448:	00048513          	mv	a0,s1
+8010044c:	00412483          	lw	s1,4(sp)
+80100450:	01010113          	addi	sp,sp,16
+80100454:	00008067          	ret
+80100458:	801015b7          	lui	a1,0x80101
+8010045c:	80101537          	lui	a0,0x80101
+80100460:	02d00613          	li	a2,45
+80100464:	9fc58593          	addi	a1,a1,-1540 # 801009fc <_heap_end+0xf81009fc>
+80100468:	a4450513          	addi	a0,a0,-1468 # 80100a44 <_heap_end+0xf8100a44>
+8010046c:	498000ef          	jal	ra,80100904 <my_printf>
+80100470:	00100513          	li	a0,1
+80100474:	eb1ff0ef          	jal	ra,80100324 <_halt>
+
+Disassembly of section .text.my_strcmp:
+
+80100478 <my_strcmp>:
+80100478:	ff010113          	addi	sp,sp,-16
+8010047c:	00112623          	sw	ra,12(sp)
+80100480:	00812423          	sw	s0,8(sp)
+80100484:	00912223          	sw	s1,4(sp)
+80100488:	01212023          	sw	s2,0(sp)
+8010048c:	0a050663          	beqz	a0,80100538 <my_strcmp+0xc0>
+80100490:	00058493          	mv	s1,a1
+80100494:	0a058263          	beqz	a1,80100538 <my_strcmp+0xc0>
+80100498:	00050413          	mv	s0,a0
+8010049c:	eb5ff0ef          	jal	ra,80100350 <my_strlen.part.0>
+801004a0:	00050913          	mv	s2,a0
+801004a4:	00048513          	mv	a0,s1
+801004a8:	ea9ff0ef          	jal	ra,80100350 <my_strlen.part.0>
+801004ac:	06090463          	beqz	s2,80100514 <my_strcmp+0x9c>
+801004b0:	04050e63          	beqz	a0,8010050c <my_strcmp+0x94>
+801004b4:	0004c703          	lbu	a4,0(s1)
+801004b8:	00044783          	lbu	a5,0(s0)
+801004bc:	02e7e863          	bltu	a5,a4,801004ec <my_strcmp+0x74>
+801004c0:	00140713          	addi	a4,s0,1
+801004c4:	00148793          	addi	a5,s1,1
+801004c8:	00990833          	add	a6,s2,s1
+801004cc:	009505b3          	add	a1,a0,s1
+801004d0:	03078e63          	beq	a5,a6,8010050c <my_strcmp+0x94>
+801004d4:	02b78c63          	beq	a5,a1,8010050c <my_strcmp+0x94>
+801004d8:	00074603          	lbu	a2,0(a4)
+801004dc:	0007c683          	lbu	a3,0(a5)
+801004e0:	00170713          	addi	a4,a4,1
+801004e4:	00178793          	addi	a5,a5,1
+801004e8:	fed674e3          	bleu	a3,a2,801004d0 <my_strcmp+0x58>
+801004ec:	fff00793          	li	a5,-1
+801004f0:	00c12083          	lw	ra,12(sp)
+801004f4:	00812403          	lw	s0,8(sp)
+801004f8:	00412483          	lw	s1,4(sp)
+801004fc:	00012903          	lw	s2,0(sp)
+80100500:	00078513          	mv	a0,a5
+80100504:	01010113          	addi	sp,sp,16
+80100508:	00008067          	ret
+8010050c:	00100793          	li	a5,1
+80100510:	ff2560e3          	bltu	a0,s2,801004f0 <my_strcmp+0x78>
+80100514:	00c12083          	lw	ra,12(sp)
+80100518:	00812403          	lw	s0,8(sp)
+8010051c:	00a93533          	sltu	a0,s2,a0
+80100520:	40a007b3          	neg	a5,a0
+80100524:	00412483          	lw	s1,4(sp)
+80100528:	00012903          	lw	s2,0(sp)
+8010052c:	00078513          	mv	a0,a5
+80100530:	01010113          	addi	sp,sp,16
+80100534:	00008067          	ret
+80100538:	801015b7          	lui	a1,0x80101
+8010053c:	80101537          	lui	a0,0x80101
+80100540:	03d00613          	li	a2,61
+80100544:	9fc58593          	addi	a1,a1,-1540 # 801009fc <_heap_end+0xf81009fc>
+80100548:	a4450513          	addi	a0,a0,-1468 # 80100a44 <_heap_end+0xf8100a44>
+8010054c:	3b8000ef          	jal	ra,80100904 <my_printf>
+80100550:	00100513          	li	a0,1
+80100554:	dd1ff0ef          	jal	ra,80100324 <_halt>
+
+Disassembly of section .text.my_memset:
+
+80100558 <my_memset>:
+80100558:	02050463          	beqz	a0,80100580 <my_memset+0x28>
+8010055c:	02060063          	beqz	a2,8010057c <my_memset+0x24>
+80100560:	0ff5f593          	andi	a1,a1,255
+80100564:	00050793          	mv	a5,a0
+80100568:	00c50633          	add	a2,a0,a2
+8010056c:	00b78023          	sb	a1,0(a5)
+80100570:	00178793          	addi	a5,a5,1
+80100574:	fec79ce3          	bne	a5,a2,8010056c <my_memset+0x14>
+80100578:	00008067          	ret
+8010057c:	00008067          	ret
+80100580:	801015b7          	lui	a1,0x80101
+80100584:	80101537          	lui	a0,0x80101
+80100588:	ff010113          	addi	sp,sp,-16
+8010058c:	06500613          	li	a2,101
+80100590:	9fc58593          	addi	a1,a1,-1540 # 801009fc <_heap_end+0xf81009fc>
+80100594:	a4450513          	addi	a0,a0,-1468 # 80100a44 <_heap_end+0xf8100a44>
+80100598:	00112623          	sw	ra,12(sp)
+8010059c:	368000ef          	jal	ra,80100904 <my_printf>
+801005a0:	00100513          	li	a0,1
+801005a4:	d81ff0ef          	jal	ra,80100324 <_halt>
+
+Disassembly of section .text.my_memcmp:
+
+801005a8 <my_memcmp>:
+801005a8:	04050663          	beqz	a0,801005f4 <my_memcmp+0x4c>
+801005ac:	04058463          	beqz	a1,801005f4 <my_memcmp+0x4c>
+801005b0:	02060e63          	beqz	a2,801005ec <my_memcmp+0x44>
+801005b4:	00054703          	lbu	a4,0(a0)
+801005b8:	0005c783          	lbu	a5,0(a1)
+801005bc:	02f76463          	bltu	a4,a5,801005e4 <my_memcmp+0x3c>
+801005c0:	00150793          	addi	a5,a0,1
+801005c4:	00158593          	addi	a1,a1,1
+801005c8:	00c50633          	add	a2,a0,a2
+801005cc:	02c78063          	beq	a5,a2,801005ec <my_memcmp+0x44>
+801005d0:	0007c683          	lbu	a3,0(a5)
+801005d4:	0005c703          	lbu	a4,0(a1)
+801005d8:	00178793          	addi	a5,a5,1
+801005dc:	00158593          	addi	a1,a1,1
+801005e0:	fee6f6e3          	bleu	a4,a3,801005cc <my_memcmp+0x24>
+801005e4:	fff00513          	li	a0,-1
+801005e8:	00008067          	ret
+801005ec:	00000513          	li	a0,0
+801005f0:	00008067          	ret
+801005f4:	801015b7          	lui	a1,0x80101
+801005f8:	80101537          	lui	a0,0x80101
+801005fc:	ff010113          	addi	sp,sp,-16
+80100600:	07d00613          	li	a2,125
+80100604:	9fc58593          	addi	a1,a1,-1540 # 801009fc <_heap_end+0xf81009fc>
+80100608:	a4450513          	addi	a0,a0,-1468 # 80100a44 <_heap_end+0xf8100a44>
+8010060c:	00112623          	sw	ra,12(sp)
+80100610:	2f4000ef          	jal	ra,80100904 <my_printf>
+80100614:	00100513          	li	a0,1
+80100618:	d0dff0ef          	jal	ra,80100324 <_halt>
+
+Disassembly of section .text.my_vsprintf:
+
+8010061c <my_vsprintf>:
+8010061c:	fb010113          	addi	sp,sp,-80
+80100620:	04112623          	sw	ra,76(sp)
+80100624:	04912223          	sw	s1,68(sp)
+80100628:	03412c23          	sw	s4,56(sp)
+8010062c:	00058493          	mv	s1,a1
+80100630:	01b12e23          	sw	s11,28(sp)
+80100634:	00050a13          	mv	s4,a0
+80100638:	00060d93          	mv	s11,a2
+8010063c:	04812423          	sw	s0,72(sp)
+80100640:	05212023          	sw	s2,64(sp)
+80100644:	03312e23          	sw	s3,60(sp)
+80100648:	03512a23          	sw	s5,52(sp)
+8010064c:	03612823          	sw	s6,48(sp)
+80100650:	03712623          	sw	s7,44(sp)
+80100654:	03812423          	sw	s8,40(sp)
+80100658:	03912223          	sw	s9,36(sp)
+8010065c:	03a12023          	sw	s10,32(sp)
+80100660:	d1dff0ef          	jal	ra,8010037c <my_strlen>
+80100664:	00050613          	mv	a2,a0
+80100668:	00000593          	li	a1,0
+8010066c:	000a0513          	mv	a0,s4
+80100670:	ee9ff0ef          	jal	ra,80100558 <my_memset>
+80100674:	0004c783          	lbu	a5,0(s1)
+80100678:	28078263          	beqz	a5,801008fc <my_vsprintf+0x2e0>
+8010067c:	80101c37          	lui	s8,0x80101
+80100680:	80101b37          	lui	s6,0x80101
+80100684:	00000413          	li	s0,0
+80100688:	000a0513          	mv	a0,s4
+8010068c:	02500a93          	li	s5,37
+80100690:	01500b93          	li	s7,21
+80100694:	a60b0b13          	addi	s6,s6,-1440 # 80100a60 <_heap_end+0xf8100a60>
+80100698:	03000d13          	li	s10,48
+8010069c:	af0c0993          	addi	s3,s8,-1296 # 80100af0 <_heap_end+0xf8100af0>
+801006a0:	80101cb7          	lui	s9,0x80101
+801006a4:	0280006f          	j	801006cc <my_vsprintf+0xb0>
+801006a8:	00140413          	addi	s0,s0,1
+801006ac:	00090713          	mv	a4,s2
+801006b0:	00f50023          	sb	a5,0(a0)
+801006b4:	008a0533          	add	a0,s4,s0
+801006b8:	00048913          	mv	s2,s1
+801006bc:	00050813          	mv	a6,a0
+801006c0:	00070493          	mv	s1,a4
+801006c4:	00194783          	lbu	a5,1(s2)
+801006c8:	06078463          	beqz	a5,80100730 <my_vsprintf+0x114>
+801006cc:	00050813          	mv	a6,a0
+801006d0:	00148913          	addi	s2,s1,1
+801006d4:	fd579ae3          	bne	a5,s5,801006a8 <my_vsprintf+0x8c>
+801006d8:	0014c703          	lbu	a4,1(s1)
+801006dc:	00248493          	addi	s1,s1,2
+801006e0:	f9d70793          	addi	a5,a4,-99
+801006e4:	0ff7f793          	andi	a5,a5,255
+801006e8:	14fbea63          	bltu	s7,a5,8010083c <my_vsprintf+0x220>
+801006ec:	00279793          	slli	a5,a5,0x2
+801006f0:	016787b3          	add	a5,a5,s6
+801006f4:	0007a783          	lw	a5,0(a5)
+801006f8:	00078067          	jr	a5
+801006fc:	000da783          	lw	a5,0(s11)
+80100700:	004d8d93          	addi	s11,s11,4
+80100704:	00078593          	mv	a1,a5
+80100708:	00f12623          	sw	a5,12(sp)
+8010070c:	c7dff0ef          	jal	ra,80100388 <my_strcpy>
+80100710:	00c12783          	lw	a5,12(sp)
+80100714:	00078513          	mv	a0,a5
+80100718:	c65ff0ef          	jal	ra,8010037c <my_strlen>
+8010071c:	00194783          	lbu	a5,1(s2)
+80100720:	00850433          	add	s0,a0,s0
+80100724:	008a0533          	add	a0,s4,s0
+80100728:	00050813          	mv	a6,a0
+8010072c:	fa0790e3          	bnez	a5,801006cc <my_vsprintf+0xb0>
+80100730:	00080023          	sb	zero,0(a6)
+80100734:	04c12083          	lw	ra,76(sp)
+80100738:	04812403          	lw	s0,72(sp)
+8010073c:	04412483          	lw	s1,68(sp)
+80100740:	04012903          	lw	s2,64(sp)
+80100744:	03c12983          	lw	s3,60(sp)
+80100748:	03812a03          	lw	s4,56(sp)
+8010074c:	03412a83          	lw	s5,52(sp)
+80100750:	03012b03          	lw	s6,48(sp)
+80100754:	02c12b83          	lw	s7,44(sp)
+80100758:	02812c03          	lw	s8,40(sp)
+8010075c:	02412c83          	lw	s9,36(sp)
+80100760:	02012d03          	lw	s10,32(sp)
+80100764:	01c12d83          	lw	s11,28(sp)
+80100768:	00000513          	li	a0,0
+8010076c:	05010113          	addi	sp,sp,80
+80100770:	00008067          	ret
+80100774:	000da683          	lw	a3,0(s11)
+80100778:	ad8c8713          	addi	a4,s9,-1320 # 80100ad8 <_heap_end+0xf8100ad8>
+8010077c:	004d8d93          	addi	s11,s11,4
+80100780:	10068a63          	beqz	a3,80100894 <my_vsprintf+0x278>
+80100784:	00070023          	sb	zero,0(a4)
+80100788:	00000793          	li	a5,0
+8010078c:	00900893          	li	a7,9
+80100790:	00f6f593          	andi	a1,a3,15
+80100794:	0ff5f813          	andi	a6,a1,255
+80100798:	03080613          	addi	a2,a6,48
+8010079c:	00b8f463          	bleu	a1,a7,801007a4 <my_vsprintf+0x188>
+801007a0:	05780613          	addi	a2,a6,87
+801007a4:	00f985b3          	add	a1,s3,a5
+801007a8:	00178793          	addi	a5,a5,1
+801007ac:	01879793          	slli	a5,a5,0x18
+801007b0:	00c58023          	sb	a2,0(a1)
+801007b4:	0046d693          	srli	a3,a3,0x4
+801007b8:	4187d793          	srai	a5,a5,0x18
+801007bc:	fc069ae3          	bnez	a3,80100790 <my_vsprintf+0x174>
+801007c0:	00f70023          	sb	a5,0(a4)
+801007c4:	0dc0006f          	j	801008a0 <my_vsprintf+0x284>
+801007c8:	000da683          	lw	a3,0(s11)
+801007cc:	004d8d93          	addi	s11,s11,4
+801007d0:	08069063          	bnez	a3,80100850 <my_vsprintf+0x234>
+801007d4:	afac0823          	sb	s10,-1296(s8)
+801007d8:	03000693          	li	a3,48
+801007dc:	00100793          	li	a5,1
+801007e0:	ad8c8713          	addi	a4,s9,-1320
+801007e4:	fff78793          	addi	a5,a5,-1
+801007e8:	af0c0613          	addi	a2,s8,-1296
+801007ec:	0180006f          	j	80100804 <my_vsprintf+0x1e8>
+801007f0:	fff78793          	addi	a5,a5,-1
+801007f4:	01879693          	slli	a3,a5,0x18
+801007f8:	4186d693          	srai	a3,a3,0x18
+801007fc:	00d606b3          	add	a3,a2,a3
+80100800:	0006c683          	lbu	a3,0(a3)
+80100804:	00f70023          	sb	a5,0(a4)
+80100808:	00d50023          	sb	a3,0(a0)
+8010080c:	00070783          	lb	a5,0(a4)
+80100810:	00140413          	addi	s0,s0,1
+80100814:	00150513          	addi	a0,a0,1
+80100818:	fc079ce3          	bnez	a5,801007f0 <my_vsprintf+0x1d4>
+8010081c:	0280006f          	j	80100844 <my_vsprintf+0x228>
+80100820:	000da783          	lw	a5,0(s11)
+80100824:	00140413          	addi	s0,s0,1
+80100828:	004d8d93          	addi	s11,s11,4
+8010082c:	00f50023          	sb	a5,0(a0)
+80100830:	008a0533          	add	a0,s4,s0
+80100834:	00050813          	mv	a6,a0
+80100838:	e8dff06f          	j	801006c4 <my_vsprintf+0xa8>
+8010083c:	00140413          	addi	s0,s0,1
+80100840:	00e50023          	sb	a4,0(a0)
+80100844:	008a0533          	add	a0,s4,s0
+80100848:	00050813          	mv	a6,a0
+8010084c:	e79ff06f          	j	801006c4 <my_vsprintf+0xa8>
+80100850:	ad8c8713          	addi	a4,s9,-1320
+80100854:	00070023          	sb	zero,0(a4)
+80100858:	00000793          	li	a5,0
+8010085c:	00a00613          	li	a2,10
+80100860:	02c6f5b3          	remu	a1,a3,a2
+80100864:	00f988b3          	add	a7,s3,a5
+80100868:	00178793          	addi	a5,a5,1
+8010086c:	01879793          	slli	a5,a5,0x18
+80100870:	4187d793          	srai	a5,a5,0x18
+80100874:	02c6d6b3          	divu	a3,a3,a2
+80100878:	03058593          	addi	a1,a1,48
+8010087c:	00b88023          	sb	a1,0(a7)
+80100880:	fe0690e3          	bnez	a3,80100860 <my_vsprintf+0x244>
+80100884:	00f70023          	sb	a5,0(a4)
+80100888:	e2078ee3          	beqz	a5,801006c4 <my_vsprintf+0xa8>
+8010088c:	0008c683          	lbu	a3,0(a7)
+80100890:	f55ff06f          	j	801007e4 <my_vsprintf+0x1c8>
+80100894:	00100793          	li	a5,1
+80100898:	00f70023          	sb	a5,0(a4)
+8010089c:	afac0823          	sb	s10,-1296(s8)
+801008a0:	00140793          	addi	a5,s0,1
+801008a4:	01a50023          	sb	s10,0(a0)
+801008a8:	00fa07b3          	add	a5,s4,a5
+801008ac:	07800693          	li	a3,120
+801008b0:	00d78023          	sb	a3,0(a5)
+801008b4:	00070783          	lb	a5,0(a4)
+801008b8:	00240413          	addi	s0,s0,2
+801008bc:	008a06b3          	add	a3,s4,s0
+801008c0:	00068513          	mv	a0,a3
+801008c4:	00068813          	mv	a6,a3
+801008c8:	de078ee3          	beqz	a5,801006c4 <my_vsprintf+0xa8>
+801008cc:	fff78793          	addi	a5,a5,-1
+801008d0:	01879793          	slli	a5,a5,0x18
+801008d4:	4187d793          	srai	a5,a5,0x18
+801008d8:	00f98633          	add	a2,s3,a5
+801008dc:	00064603          	lbu	a2,0(a2)
+801008e0:	00f70023          	sb	a5,0(a4)
+801008e4:	00140413          	addi	s0,s0,1
+801008e8:	00c68023          	sb	a2,0(a3)
+801008ec:	00070783          	lb	a5,0(a4)
+801008f0:	00168693          	addi	a3,a3,1
+801008f4:	fc079ce3          	bnez	a5,801008cc <my_vsprintf+0x2b0>
+801008f8:	f4dff06f          	j	80100844 <my_vsprintf+0x228>
+801008fc:	000a0813          	mv	a6,s4
+80100900:	e31ff06f          	j	80100730 <my_vsprintf+0x114>
+
+Disassembly of section .text.my_printf:
+
+80100904 <my_printf>:
+80100904:	fc010113          	addi	sp,sp,-64
+80100908:	00812c23          	sw	s0,24(sp)
+8010090c:	02410313          	addi	t1,sp,36
+80100910:	80101437          	lui	s0,0x80101
+80100914:	02b12223          	sw	a1,36(sp)
+80100918:	02c12423          	sw	a2,40(sp)
+8010091c:	00050593          	mv	a1,a0
+80100920:	00030613          	mv	a2,t1
+80100924:	afc40513          	addi	a0,s0,-1284 # 80100afc <_heap_end+0xf8100afc>
+80100928:	00112e23          	sw	ra,28(sp)
+8010092c:	00912a23          	sw	s1,20(sp)
+80100930:	02d12623          	sw	a3,44(sp)
+80100934:	02e12823          	sw	a4,48(sp)
+80100938:	02f12a23          	sw	a5,52(sp)
+8010093c:	03012c23          	sw	a6,56(sp)
+80100940:	03112e23          	sw	a7,60(sp)
+80100944:	00612623          	sw	t1,12(sp)
+80100948:	cd5ff0ef          	jal	ra,8010061c <my_vsprintf>
+8010094c:	afc40513          	addi	a0,s0,-1284
+80100950:	a2dff0ef          	jal	ra,8010037c <my_strlen>
+80100954:	00050e63          	beqz	a0,80100970 <my_printf+0x6c>
+80100958:	afc40413          	addi	s0,s0,-1284
+8010095c:	008504b3          	add	s1,a0,s0
+80100960:	00044503          	lbu	a0,0(s0)
+80100964:	00140413          	addi	s0,s0,1
+80100968:	9b1ff0ef          	jal	ra,80100318 <_putc>
+8010096c:	fe941ae3          	bne	s0,s1,80100960 <my_printf+0x5c>
+80100970:	01c12083          	lw	ra,28(sp)
+80100974:	01812403          	lw	s0,24(sp)
+80100978:	01412483          	lw	s1,20(sp)
+8010097c:	00000513          	li	a0,0
+80100980:	04010113          	addi	sp,sp,64
+80100984:	00008067          	ret

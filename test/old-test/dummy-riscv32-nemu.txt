@@ -1,0 +1,168 @@
+
+/home/lanfeng/develop/njeum/njemulator/nexus-am/tests/cputest/build/dummy-riscv32-nemu.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+80100000 <_start>:
+80100000:	00106093          	ori	ra,zero,1
+80100004:	00209093          	slli	ra,ra,0x2
+80100008:	0080e093          	ori	ra,ra,8
+8010000c:	00106113          	ori	sp,zero,1
+80100010:	00311113          	slli	sp,sp,0x3
+80100014:	00116113          	ori	sp,sp,1
+80100018:	00806093          	ori	ra,zero,8
+8010001c:	0010d193          	srli	gp,ra,0x1
+80100020:	01006193          	ori	gp,zero,16
+80100024:	001151b3          	srl	gp,sp,ra
+80100028:	00206093          	ori	ra,zero,2
+8010002c:	01006113          	ori	sp,zero,16
+80100030:	001151b3          	srl	gp,sp,ra
+80100034:	0001e193          	ori	gp,gp,0
+80100038:	00806093          	ori	ra,zero,8
+8010003c:	00306113          	ori	sp,zero,3
+80100040:	003081b3          	add	gp,ra,gp
+80100044:	0001e193          	ori	gp,gp,0
+80100048:	00210193          	addi	gp,sp,2
+8010004c:	403081b3          	sub	gp,ra,gp
+80100050:	00606093          	ori	ra,zero,6
+80100054:	00306113          	ori	sp,zero,3
+80100058:	0020a1b3          	slt	gp,ra,sp
+8010005c:	001121b3          	slt	gp,sp,ra
+80100060:	0050a193          	slti	gp,ra,5
+80100064:	0420a193          	slti	gp,ra,66
+80100068:	ffa06093          	ori	ra,zero,-6
+8010006c:	ffd06113          	ori	sp,zero,-3
+80100070:	0020a1b3          	slt	gp,ra,sp
+80100074:	001121b3          	slt	gp,sp,ra
+80100078:	ffb0a193          	slti	gp,ra,-5
+8010007c:	fbe0a193          	slti	gp,ra,-66
+80100080:	0020b1b3          	sltu	gp,ra,sp
+80100084:	001131b3          	sltu	gp,sp,ra
+80100088:	ffb0b193          	sltiu	gp,ra,-5
+8010008c:	fbe0b193          	sltiu	gp,ra,-66
+80100090:	01806093          	ori	ra,zero,24
+80100094:	00806113          	ori	sp,zero,8
+80100098:	0020f1b3          	and	gp,ra,sp
+8010009c:	0100f193          	andi	gp,ra,16
+801000a0:	00006093          	ori	ra,zero,0
+801000a4:	00006113          	ori	sp,zero,0
+801000a8:	00006193          	ori	gp,zero,0
+801000ac:	00006213          	ori	tp,zero,0
+801000b0:	00006293          	ori	t0,zero,0
+801000b4:	00006313          	ori	t1,zero,0
+801000b8:	00006393          	ori	t2,zero,0
+801000bc:	00006413          	ori	s0,zero,0
+801000c0:	00006493          	ori	s1,zero,0
+801000c4:	00006513          	ori	a0,zero,0
+801000c8:	00006593          	ori	a1,zero,0
+801000cc:	00006613          	ori	a2,zero,0
+801000d0:	00006693          	ori	a3,zero,0
+801000d4:	00006713          	ori	a4,zero,0
+801000d8:	00006793          	ori	a5,zero,0
+801000dc:	00006813          	ori	a6,zero,0
+801000e0:	004000ef          	jal	ra,801000e4 <_loop1>
+
+801000e4 <_loop1>:
+801000e4:	00306093          	ori	ra,zero,3
+801000e8:	00308113          	addi	sp,ra,3
+801000ec:	008000ef          	jal	ra,801000f4 <_loop2>
+801000f0:	01606093          	ori	ra,zero,22
+
+801000f4 <_loop2>:
+801000f4:	00506113          	ori	sp,zero,5
+801000f8:	00506193          	ori	gp,zero,5
+801000fc:	00310463          	beq	sp,gp,80100104 <_loop3>
+80100100:	00906113          	ori	sp,zero,9
+
+80100104 <_loop3>:
+80100104:	00306113          	ori	sp,zero,3
+80100108:	00506193          	ori	gp,zero,5
+8010010c:	00311463          	bne	sp,gp,80100114 <_loop5>
+80100110:	00906113          	ori	sp,zero,9
+
+80100114 <_loop5>:
+80100114:	00506113          	ori	sp,zero,5
+80100118:	00506193          	ori	gp,zero,5
+8010011c:	00311463          	bne	sp,gp,80100124 <_loop6>
+80100120:	00906113          	ori	sp,zero,9
+
+80100124 <_loop6>:
+80100124:	00206213          	ori	tp,zero,2
+80100128:	00506293          	ori	t0,zero,5
+8010012c:	00524863          	blt	tp,t0,8010013c <_loop7>
+80100130:	00906113          	ori	sp,zero,9
+80100134:	00806113          	ori	sp,zero,8
+80100138:	00306113          	ori	sp,zero,3
+
+8010013c <_loop7>:
+8010013c:	ffb06213          	ori	tp,zero,-5
+80100140:	ffe06293          	ori	t0,zero,-2
+80100144:	00524663          	blt	tp,t0,80100150 <_loop8>
+80100148:	ffb06213          	ori	tp,zero,-5
+8010014c:	ffe06293          	ori	t0,zero,-2
+
+80100150 <_loop8>:
+80100150:	ffe06213          	ori	tp,zero,-2
+80100154:	14d06293          	ori	t0,zero,333
+80100158:	00526c63          	bltu	tp,t0,80100170 <_fun1>
+8010015c:	00006093          	ori	ra,zero,0
+80100160:	00106113          	ori	sp,zero,1
+80100164:	00206213          	ori	tp,zero,2
+80100168:	00306293          	ori	t0,zero,3
+8010016c:	010000ef          	jal	ra,8010017c <_main>
+
+80100170 <_fun1>:
+80100170:	00906213          	ori	tp,zero,9
+80100174:	00a06293          	ori	t0,zero,10
+80100178:	00008067          	ret
+
+8010017c <_main>:
+8010017c:	00006093          	ori	ra,zero,0
+80100180:	00106113          	ori	sp,zero,1
+80100184:	00206213          	ori	tp,zero,2
+80100188:	00306293          	ori	t0,zero,3
+8010018c:	00406333          	or	t1,zero,tp
+80100190:	005063b3          	or	t2,zero,t0
+80100194:	00706093          	ori	ra,zero,7
+80100198:	00806113          	ori	sp,zero,8
+8010019c:	0020c1b3          	xor	gp,ra,sp
+801001a0:	0190c193          	xori	gp,ra,25
+801001a4:	00006093          	ori	ra,zero,0
+801001a8:	00006113          	ori	sp,zero,0
+801001ac:	00006193          	ori	gp,zero,0
+801001b0:	00006213          	ori	tp,zero,0
+801001b4:	00006293          	ori	t0,zero,0
+801001b8:	00006313          	ori	t1,zero,0
+801001bc:	00006393          	ori	t2,zero,0
+801001c0:	00006413          	ori	s0,zero,0
+801001c4:	00006493          	ori	s1,zero,0
+801001c8:	00006513          	ori	a0,zero,0
+801001cc:	00006593          	ori	a1,zero,0
+801001d0:	00006613          	ori	a2,zero,0
+801001d4:	00006693          	ori	a3,zero,0
+801001d8:	00006713          	ori	a4,zero,0
+801001dc:	00006793          	ori	a5,zero,0
+801001e0:	00006813          	ori	a6,zero,0
+801001e4:	00000413          	li	s0,0
+801001e8:	00009117          	auipc	sp,0x9
+801001ec:	e1810113          	addi	sp,sp,-488 # 80109000 <_end>
+801001f0:	00c000ef          	jal	ra,801001fc <_trm_init>
+
+Disassembly of section .text.startup:
+
+801001f4 <main>:
+801001f4:	00000513          	li	a0,0
+801001f8:	00008067          	ret
+
+Disassembly of section .text._trm_init:
+
+801001fc <_trm_init>:
+801001fc:	80000537          	lui	a0,0x80000
+80100200:	ff010113          	addi	sp,sp,-16
+80100204:	00050513          	mv	a0,a0
+80100208:	00112623          	sw	ra,12(sp)
+8010020c:	fe9ff0ef          	jal	ra,801001f4 <_etext>
+80100210:	00050513          	mv	a0,a0
+80100214:	0000006b          	0x6b
+80100218:	0000006f          	j	80100218 <_trm_init+0x1c>
