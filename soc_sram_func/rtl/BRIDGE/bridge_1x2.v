@@ -47,6 +47,8 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //*************************************************************************
 `define CONF_ADDR_BASE 32'h1faf_0000
 `define CONF_ADDR_MASK 32'hffff_0000
+`define UART_ADDR_BASE 32'h1000_0000
+`define RTC_ADDR_BASE  32'ha000_0000
 module bridge_1x2(                                 
     input                           clk,          // clock 
     input                           resetn,       // reset, active low
@@ -75,7 +77,10 @@ module bridge_1x2(
     reg sel_sram_r; // reg of sel_dram 
     reg sel_conf_r; // reg of sel_conf 
 
-    assign sel_conf = (cpu_data_addr & `CONF_ADDR_MASK) == `CONF_ADDR_BASE;
+    assign sel_conf = (cpu_data_addr & `CONF_ADDR_MASK) == `CONF_ADDR_BASE
+                    | (cpu_data_addr & `CONF_ADDR_MASK) == `UART_ADDR_BASE
+                    | (cpu_data_addr & `CONF_ADDR_MASK) == `RTC_ADDR_BASE;
+
     assign sel_sram = !sel_conf;
 
     // data sram

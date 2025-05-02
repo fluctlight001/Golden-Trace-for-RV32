@@ -63,13 +63,17 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 `define BTN_KEY_ADDR   16'hf024   //32'hbfaf_f024
 `define BTN_STEP_ADDR  16'hf028   //32'hbfaf_f028
 `define SW_INTER_ADDR  16'hf02c   //32'hbfaf_f02c 
-`define TIMER_ADDR     16'he000   //32'hbfaf_e000 
+// `define TIMER_ADDR     16'he000   //32'hbfaf_e000 
 
 `define IO_SIMU_ADDR      16'hffec  //32'hbfaf_ffec
-`define VIRTUAL_UART_ADDR 16'hfff0  //32'hbfaf_fff0
+// `define VIRTUAL_UART_ADDR 16'hfff0  //32'hbfaf_fff0
 `define SIMU_FLAG_ADDR    16'hfff4  //32'hbfaf_fff4 
 `define OPEN_TRACE_ADDR   16'hfff8  //32'hbfaf_fff8
 `define NUM_MONITOR_ADDR  16'hfffc  //32'hbfaf_fffc
+
+`define RTCL_ADDR   16'h0048
+`define RTCH_ADDR   16'h004c
+`define UART_ADDR   16'h0000
 module confreg
 #(parameter SIMULATION=1'b0)
 (                     
@@ -110,7 +114,7 @@ module confreg
     wire [31:0] sw_inter_data; //switch interleave
     wire [31:0] btn_key_data;
     wire [31:0] btn_step_data;
-    reg  [31:0] timer_r2;
+    reg  [63:0] timer_r2;
     reg  [31:0] simu_flag;
     reg  [31:0] io_simu;
     reg  [7 :0] virtual_uart_data;
@@ -145,10 +149,13 @@ module confreg
                 `BTN_KEY_ADDR  : conf_rdata_reg <= btn_key_data ;
                 `BTN_STEP_ADDR : conf_rdata_reg <= btn_step_data;
                 `SW_INTER_ADDR : conf_rdata_reg <= sw_inter_data;
-                `TIMER_ADDR    : conf_rdata_reg <= timer_r2     ;
+                // `TIMER_ADDR    : conf_rdata_reg <= timer_r2     ;
+                `RTCH_ADDR     : conf_rdata_reg <= timer_r2[63:32]    ;
+                `RTCL_ADDR     : conf_rdata_reg <= timer_r2[31:0]; 
                 `SIMU_FLAG_ADDR: conf_rdata_reg <= simu_flag    ;
                 `IO_SIMU_ADDR  : conf_rdata_reg <= io_simu      ;
-                `VIRTUAL_UART_ADDR : conf_rdata_reg <= {24'd0,virtual_uart_data} ;
+                // `VIRTUAL_UART_ADDR : conf_rdata_reg <= {24'd0,virtual_uart_data} ;
+                `UART_ADDR     : conf_rdata_reg <= {24'd0,virtual_uart_data} ;
                 `OPEN_TRACE_ADDR : conf_rdata_reg <= {31'd0,open_trace} ;
                 `NUM_MONITOR_ADDR: conf_rdata_reg <= {31'd0,num_monitor} ;
                 default        : conf_rdata_reg <= 32'd0;
@@ -192,22 +199,28 @@ end
 //-------------------------------{timer}begin----------------------------//
 reg         write_timer_begin,write_timer_begin_r1, write_timer_begin_r2,write_timer_begin_r3;
 reg         write_timer_end_r1, write_timer_end_r2;
-reg  [31:0] conf_wdata_r, conf_wdata_r1,conf_wdata_r2;
+reg  [1:0]  write_flag, write_flag_r1, write_flag_r2, write_flag_r3;
+reg  [63:0] conf_wdata_r, conf_wdata_r1,conf_wdata_r2;
 
-reg  [31:0] timer_r1;
-reg  [31:0] timer;
+reg  [63:0] timer_r1;
+reg  [63:0] timer;
 
-wire write_timer = conf_we & (conf_addr[15:0]==`TIMER_ADDR);
+wire write_timer = conf_we & ((conf_addr[15:0]==`RTCH_ADDR) | (conf_addr[15:0] == `RTCL_ADDR));
 always @(posedge clk)
 begin
     if (!resetn)
     begin
         write_timer_begin <= 1'b0;
     end 
-    else if (write_timer)
+    else if (write_timer & (conf_addr[15:0]==`RTCH_ADDR))
     begin
         write_timer_begin <= 1'b1;
-        conf_wdata_r      <= conf_wdata;
+        conf_wdata_r[63:32] <= conf_wdata;
+    end 
+    else if (write_timer & (conf_addr[15:0]==`RTCL_ADDR))
+    begin
+        write_timer_begin <= 1'b1;
+        conf_wdata_r[31:0] <= conf_wdata;
     end 
     else if (write_timer_end_r2)
     begin
@@ -228,11 +241,11 @@ begin
 
     if(!resetn)
     begin
-        timer <= 32'd0;
+        timer <= 64'd0;
     end
     else if (write_timer_begin_r2 && !write_timer_begin_r3)
     begin
-        timer <= conf_wdata_r2[31:0];
+        timer <= conf_wdata_r2[63:0];
     end
     else
     begin
@@ -304,7 +317,7 @@ end
 
 //---------------------------{virtual uart}begin-------------------------//
 wire [7:0] write_uart_data;
-wire write_uart_valid  = conf_we & (conf_addr[15:0]==`VIRTUAL_UART_ADDR);
+wire write_uart_valid  = conf_we & (conf_addr[15:0]==`UART_ADDR);
 assign write_uart_data = conf_wdata[7:0];
 always @(posedge clk)
 begin

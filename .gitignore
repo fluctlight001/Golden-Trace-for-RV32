@@ -12,3 +12,4 @@
 doc/
 **/mycpu.srcs/
 **/mycpu.sim/
+**/mycpu_local.xpr
