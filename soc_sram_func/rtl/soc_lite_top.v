@@ -161,11 +161,12 @@ mycpu_top cpu(
 
 //inst ram
 bdram_32 inst_ram
+// inst_ram inst_ram
 (
     .clka  (cpu_clk            ),   
     .ena   (cpu_inst_en        ),
     .wea   (cpu_inst_wen       ),   //3:0
-    .addra (cpu_inst_addr[17:2]),   //17:0
+    .addra (cpu_inst_addr[18:2]),   //16:0
     .dina  (cpu_inst_wdata     ),   //31:0
     .douta (cpu_inst_rdata     )    //31:0
 );
@@ -195,11 +196,12 @@ bridge_1x2 bridge_1x2(
 
 //data ram
 bdram_32 data_ram
+// inst_ram data_ram
 (
     .clka  (cpu_clk             ),   
     .ena   (data_sram_en        ),
     .wea   (data_sram_wen       ),   //3:0
-    .addra (data_sram_addr[17:2]),   //15:0
+    .addra (data_sram_addr[18:2]),   //16:0
     .dina  (data_sram_wdata     ),   //31:0
     .douta (data_sram_rdata     )    //31:0
 );
