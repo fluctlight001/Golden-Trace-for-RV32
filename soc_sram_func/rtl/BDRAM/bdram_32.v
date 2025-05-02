@@ -2,12 +2,12 @@ module bdram_32 (
 input                     clka,
 input                     ena,
 input   [3:0]             wea,
-input   [15:0]            addra,
+input   [16:0]            addra,
 input   [31:0]            dina,
 output  reg[31:0]         douta
 );
 
-parameter  MEMDEPTH = 2**(16);
+parameter  MEMDEPTH = 2**(17);
 
 wire [31:0] inst_read;
 
