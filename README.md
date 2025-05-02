@@ -51,7 +51,7 @@ RV32
 |-|-|-|-|-|
 |1|input|1|clk|时钟信号|
 |2|input|1|rst_n|复位信号，低有效|
-|3|input|6|ext_int|外部中断信号，需要设置该端口，内部逻辑可缺省，本次课设暂不做需求|
+|3|input|6|ext_int|外部中断信号|
 |4|input|1|inst_sram_en|指令ram 工作使能
 |5|input|4|inst_sram_we|指令ram 字节写使能
 |6|input|32|inst_sram_addr|指令ram 地址
