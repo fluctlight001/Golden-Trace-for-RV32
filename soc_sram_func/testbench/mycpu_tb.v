@@ -33,12 +33,6 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 `timescale 1ns / 1ps
 
 `define WORK_SPACE "../../../../../../../" // use your work_space 
-// `define TRACE_REF_FILE_PRFIX {`WORK_SPACE,"riscv-test32/"}
-// `define SOURCE_FILE(TEST_NAME) {`TRACE_REF_FILE_PRFIX,TEST_NAME,"-riscv32-nemu.data"}
-// `define TRACE_REF_FILE(TEST_NAME) {`TRACE_REF_FILE_PRFIX,TEST_NAME,"-riscv32-nemu.lans"}
-// `define TRACE_REF_FILE_PRFIX {`WORK_SPACE,"new-test/"}
-// `define TRACE_REF_FILE_PRFIX {`WORK_SPACE,"riscv-arch-test/"}
-// `define TRACE_REF_FILE(TEST_NAME) {`TRACE_REF_FILE_PRFIX,TEST_NAME,"-riscv32-ni.lans"}
 `define TRACE_REF_FILE(PREFIX,TEST_NAME) {PREFIX,"golden_trace/",TEST_NAME,"-riscv32-ni.ans"}
 `define SOURCE_FILE(PREFIX,TEST_NAME) {PREFIX,"data/",TEST_NAME,"-riscv32-ni.data"}
 `define CONFREG_NUM_REG      soc_lite.confreg.num_data
