@@ -1,8 +1,14 @@
 # Golden Trace for RV32
 
+## 适用人群
+
+1. 该框架适用于想直接上手适用 HDL 编写 RISC-V 处理器的同学。
+2. 如果希望能够系统学习，推荐按照 [ysyx](ysyx.org) 的方案学习。
+3. 如果需要更加完善的测试，可以尝试移植 [riscv-arch-test](https://github.com/riscv-non-isa/riscv-arch-test) 或者 [riscv-tests](https://github.com/riscv-software-src/riscv-tests)
+
 ## 文件结构
 
-RV32
+Golden Trace for RV32
 
 ├── README.md       #本文件
 
