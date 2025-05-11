@@ -36,7 +36,7 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 `define TRACE_REF_FILE(PREFIX,TEST_NAME) {PREFIX,"golden_trace/",TEST_NAME,"-riscv32-ni.ans"}
 `define SOURCE_FILE(PREFIX,TEST_NAME) {PREFIX,"data/",TEST_NAME,"-riscv32-ni.data"}
 `define CONFREG_NUM_REG      soc_lite.confreg.num_data
-`define CONFREG_OPEN_TRACE   1'b0
+`define CONFREG_OPEN_TRACE   1'b1   //1-开启trace比对 0-关闭
 `define CONFREG_NUM_MONITOR  1'b0
 `define CONFREG_UART_DISPLAY soc_lite.confreg.write_uart_valid
 `define CONFREG_UART_DATA    soc_lite.confreg.write_uart_data
@@ -387,9 +387,9 @@ end
 endtask
 
 initial begin
-    // unit_test_all;
-    // riscv_arch_test;
-    coremark;
+    unit_test_all;
+    riscv_arch_test;
+    // coremark;
     // csr_test;
     $display("==============================================================");
     $display("Test end!");

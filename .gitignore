@@ -4,6 +4,7 @@
 **/mycpu.ip_user_files/
 **/mycpu.runs/
 **/mycpu.sim/sim_1/behav/xsim/
+*.wcfg
 .Xil/
 *.jou
 *.log
@@ -13,3 +14,9 @@ doc/
 **/mycpu.srcs/
 **/mycpu.sim/
 **/mycpu_local.xpr
+**/mycpu_local.tmp/
+**/mycpu_local.cache/
+**/mycpu_local.hw/
+**/mycpu_local.ip_user_files/
+**/mycpu_local.runs/
+**/mycpu_local.sim/sim_1/behav/xsim/
